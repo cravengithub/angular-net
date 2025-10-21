@@ -1,0 +1,26 @@
+<p>user-card works!</p>
+<h2>{{ nama }}</h2>
+<p>Umur: {{ umur }}</p>
+
+<img [src]="fotoUrl" alt="User">
+<button [disabled]="isDisabled">Klik Saya</button>
+
+
+<h2>Contoh Event Binding dengan (click)</h2>
+<p><strong>Pesan:</strong> {{ pesan }}</p>
+<p><small>Jumlah klik: {{ jumlahKlik }}</small></p>
+<button (click)="onButtonClick()">Enter</button>&nbsp;<!-- Tombol reset -->
+<button (click)="resetPesan()">Reset</button>
+
+
+<h2>Event Binding pada Input (Kolom Isian)</h2>
+<p><strong>Status:</strong> {{ pesan }}</p>
+<p><small>Jumlah karakter: {{ jumlahKarakter }}</small></p>
+
+<!-- Kolom input dengan event binding -->
+<input type="text" placeholder="Ketik sesuatu..." [value]="teks" (input)="onInput($event)"
+    (keyup.enter)="onEnterKey($event)" (blur)="onBlur()" class="input-field" />
+
+<div class="button-group">
+    <button (click)="reset()">Reset</button>
+</div>
