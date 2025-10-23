@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>📋 Detail Tugas</h2>
+
+    <div *ngIf="!task" class="loading">Sedang memuat...</div>
+
+    <div *ngIf="task" class="detail-card">
+        <h3>{{ task.title }}</h3>
+        <p><strong>Status:</strong> {{ task.isCompleted ? 'Selesai' : 'Belum Selesai' }}</p>
+        <p><strong>Tanggal:</strong> {{ task.createdAt | date:'medium' }}</p>
+
+        <div class="actions">
+            <button (click)="updateTask()" class="btn-edit">Edit</button>
+            <button (click)="deleteTask()" class="btn-delete">Hapus</button>
+            <button (click)="goBack()" class="btn-back">Kembali</button>
+        </div>
+    </div>
+</div>

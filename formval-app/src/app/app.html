@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Formulir Pendaftaran (Reactive)</h1>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label for="nama">Nama:</label>
+      <input id="nama" type="text" formControlName="nama">
+      <div *ngIf="nama?.invalid && (nama?.dirty || nama?.touched)" class="error-message">
+        <div *ngIf="nama?.errors?.['required']">
+          Nama wajib diisi.
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error-message">
+        <div *ngIf="email?.errors?.['required']">
+          Email wajib diisi.
+        </div>
+        <div *ngIf="email?.errors?.['email']">
+          Format email tidak valid.
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="umur">Umur:</label>
+      <input id="umur" type="number" formControlName="umur">
+      <div *ngIf="umur?.invalid && (umur?.dirty || umur?.touched)" class="error-message">
+        <div *ngIf="umur?.errors?.['required']">
+          Umur wajib diisi.
+        </div>
+        <div *ngIf="umur?.errors?.['min']">
+          Umur minimal adalah 17 tahun.
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!profileForm.valid">Kirim</button>
+  </form>
+  <hr>
+  <h3>Debug Status Form:</h3>
+  <p>Status: {{ profileForm.status }}</p>
+  <pre>{{ profileForm.value | json }}</pre>
+</div>
